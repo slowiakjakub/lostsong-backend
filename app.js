@@ -8,10 +8,12 @@ app.listen(PORT, () => {
     console.log(`Server listening on PORT: ${PORT}`)
 })
 
-app.get("/status", (request,response) => {
+app.get("/status", myFunction);
+
+function myFunction (request,response) {
     const status = {
         "Status": "Running"
     };
 
     response.send(status);
-});
+}
