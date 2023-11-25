@@ -1,25 +1,17 @@
 const express = require('express');
+const dotenvConfig = require('dotenv').config();
 const PORT = require('./config');
 const songsRouter = require('./routes/songs');
 const mongoose = require('mongoose');
-
+const Song = require('./models/song');
 const app = express();
 app.use(express.json());
 app.use('/songs',songsRouter);
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/myapp')
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.log(err));
-
-    // Define a "song" schema
-const SongSchema = new mongoose.Schema({
-    title: String,
-    artist: String,
-    album: String
-});
-
-const Song = mongoose.model('Songs', SongSchema);
 
 const shakiraSong = new Song({
     title: "Chantaje",
