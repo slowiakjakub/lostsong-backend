@@ -9,7 +9,7 @@ const app = express();
 
 app.use(cors({
     origin: ['https://lostsong-frontend-app.vercel.app/','http://localhost:5173']
-}))
+}));
 
 app.use(express.json());
 
