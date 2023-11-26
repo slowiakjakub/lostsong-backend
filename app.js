@@ -13,14 +13,6 @@ mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.log(err));
 
-const shakiraSong = new Song({
-    title: "Chantaje",
-    artist: "Shakira",
-    album: "ShakiraReturns"
-});
-
-shakiraSong.save();
-
 app.listen(PORT, () => {
     console.log(`Server listening on PORT: ${PORT}`)
 })
