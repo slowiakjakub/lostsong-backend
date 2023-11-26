@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const Song = require('./models/song');
 const app = express();
 app.use(express.json());
-app.use('/songs',songsRouter);
+app.use('/api/songs',songsRouter);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
