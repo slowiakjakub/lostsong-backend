@@ -1,7 +1,7 @@
 const express = require('express');
 const dotenvConfig = require('dotenv').config();
 const PORT = require('./config');
-const songsRouter = require('./routes/songs');
+const songsRouter = require('./routes/songRoutes');
 const mongoose = require('mongoose');
 const Song = require('./models/song');
 const app = express();
@@ -24,13 +24,3 @@ shakiraSong.save();
 app.listen(PORT, () => {
     console.log(`Server listening on PORT: ${PORT}`)
 })
-
-app.get("/status", myFunction);
-
-function myFunction (request,response) {
-    const status = {
-        "Status": "Running"
-    };
-
-    response.send(status);
-}
