@@ -1,17 +1,17 @@
-// Mock data
-let songs = [
-  { id: 1, title: "Song 1", artist: "Artist 1", album: "Album 1" },
-  { id: 2, title: "Song 2", artist: "Artist 2", album: "Album 2" },
-];
+const Song = require("../models/song");
 
 exports.getAllSongs = (req, res) => {
-  res.json(songs);
+  Song.find()
+    .then((songs) => res.json(songs))
+    .catch((err) => res.status(500).json({ message: err.message }));
 };
 
 exports.addSong = (req, res) => {
-  const newSong = req.body;
-  songs.push(newSong);
-  res.json(newSong);
+  const newSong = new Song(req.body);
+  newSong
+    .save()
+    .then(() => res.json(newSong))
+    .catch((err) => res.status(500).json({ message: err.message }));
 };
 
 exports.getSong = (req, res) => {
