@@ -1,11 +1,18 @@
 const express = require('express');
 const dotenvConfig = require('dotenv').config();
 const PORT = require('./config');
+const cors = require('cors');
 const songsRouter = require('./routes/songRoutes');
 const mongoose = require('mongoose');
 const Song = require('./models/song');
 const app = express();
+
+app.use(cors({
+    origin: ['https://lostsong-frontend-app.vercel.app/','http://localhost:5173']
+}))
+
 app.use(express.json());
+
 app.use('/api/songs',songsRouter);
 
 // Connect to MongoDB
