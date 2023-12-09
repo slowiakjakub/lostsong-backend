@@ -14,11 +14,6 @@ exports.addSong = (req, res) => {
     .catch((err) => res.status(500).json({ message: err.message }));
 };
 
-exports.getSong = (req, res) => {
-  const song = songs.find((s) => s.id === parseInt(req.params.id));
-  res.json(song);
-};
-
 exports.updateSong = (req, res) => {
   const song = songs.find((s) => s.id === parseInt(req.params.id));
   Object.assign(song, req.body);
