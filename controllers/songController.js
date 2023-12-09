@@ -13,14 +13,3 @@ exports.addSong = (req, res) => {
     .then(() => res.json(newSong))
     .catch((err) => res.status(500).json({ message: err.message }));
 };
-
-exports.updateSong = (req, res) => {
-  const song = songs.find((s) => s.id === parseInt(req.params.id));
-  Object.assign(song, req.body);
-  res.json(song);
-};
-
-exports.deleteSong = (req, res) => {
-  songs = songs.filter((s) => s.id !== parseInt(req.params.id));
-  res.json({ message: "Song deleted" });
-};
